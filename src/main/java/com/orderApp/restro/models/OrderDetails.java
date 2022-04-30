@@ -1,14 +1,20 @@
 package com.orderApp.restro.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class OrderDetails{
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer ono;
     private Integer mno;
     private Integer tid;
+    @OneToOne
+    private Menu menu;
 
 
     public OrderDetails(Integer ono, Integer mno, Integer tid) {
@@ -19,6 +25,7 @@ public class OrderDetails{
 
     public OrderDetails() {
     }
+
 
     public Integer getOno() {
         return this.ono;
@@ -44,4 +51,11 @@ public class OrderDetails{
         this.tid = tid;
     }
 
-}
+    public Menu getMenu() {
+        return this.menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+}    
